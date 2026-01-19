@@ -34,16 +34,16 @@ jobs:
           password: ${{ secrets.DOCKERHUB_TOKEN }}
       
       - name: Build Docker image
-        run: docker build -t etl_sql_generator:latest -t etl_sql_generator:1.0.0 .
+        run: docker build -t etl_sql_generator:latest -t etl_sql_generator:2.0.0 .
       
       - name: Tag latest Docker image
         run: docker tag etl_sql_generator:latest ${{ secrets.DOCKERHUB_USERNAME }}/etl_sql_generator:latest
 
       - name: Tag version Docker image
-        run: docker tag etl_sql_generator:1.0.0 ${{ secrets.DOCKERHUB_USERNAME }}/etl_sql_generator:1.0.0
+        run: docker tag etl_sql_generator:2.0.0 ${{ secrets.DOCKERHUB_USERNAME }}/etl_sql_generator:2.0.0
 
       - name: Push latest Docker image
         run: docker push ${{ secrets.DOCKERHUB_USERNAME }}/etl_sql_generator:latest
       
       - name: Push version Docker image
-        run: docker push ${{ secrets.DOCKERHUB_USERNAME }}/etl_sql_generator:1.0.0
+        run: docker push ${{ secrets.DOCKERHUB_USERNAME }}/etl_sql_generator:2.0.0
