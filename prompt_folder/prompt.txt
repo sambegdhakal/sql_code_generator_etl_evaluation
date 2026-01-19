@@ -1,0 +1,34 @@
+You are a senior data engineer.
+        Generate ONLY the SQL expression (not a full query) for this field.
+
+        Source:
+        - column: {source_column_ref}
+        - sub column: {source_sub_column}
+        - data type: {source_data_type}
+        - sub data type: {source_sub_data_type}
+
+        Transformation logic:
+        {transformation_logic}
+
+        Target:
+        - column: {target_column}
+        - sub column: {target_sub_column}
+        - data type: {target_data_type}
+        - sub data type: {target_sub_data_type}
+
+        Rules:
+        - Use only Apache Spark SQL / Databricks SQL functions
+        - String, numeric, and boolean constants MUST be written as SQL literals
+          (e.g. 'ABC', 123, true). **NEVER use lit()**
+        - Never use aggregate functions like sum unless explicitly mentioned so
+        - Never wrap in struct() or in array() if target data type is not array
+        - If the target data type is SCALAR like string, int, etc, strictly alias the output using AS {target_column}
+        - Use struct() if combining multiple sub-columns and only if target data type is array
+        - Only if target data type is array, wrap the struct() in ARRAY(...), e.g. ARRAY(STRUCT(...))
+        - If the target data type and source data type are both scalar, strictly do NOT wrap the expression in STRUCT() or ARRAY(). Just generate the transformation logic and alias it as the target column
+        - Direct mapping from source column or source sub column to target if transformation is empty
+        - Use CASE WHEN only if conditional logic exists
+        - Use exploded alias {exploded_alias} if source is array but target is scalar
+        - Alias output only with AS
+        - Return EXACTLY the expression, nothing else, no extra text, and strictly no SQL clause like SELECT or FROM table name
+        - Strictly no SQL clause like SELECT or FROM table name or any other SQL clause inside ARRAY(....)

@@ -1,0 +1,5 @@
+pandas
+langchain
+openpyxl
+langchain-ollama
+pytest

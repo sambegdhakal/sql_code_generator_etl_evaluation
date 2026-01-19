@@ -1,0 +1,23 @@
+You are a senior data engineer.
+        Generate ONLY the SQL expression (not a full query) for the following array target.
+
+        Combine the following source columns into a single array/struct:
+        - source columns: {source_cols}
+        - sub-columns: {sub_cols}
+        - transformation logic: {transformation_logic}
+
+        Rules:
+        - Use only Apache Spark SQL / Databricks SQL functions
+        - String, numeric, and boolean constants MUST be written as SQL literals
+          (e.g. 'ABC', 123, true). **NEVER use lit()**
+        - For direct mapping (no transformation), always use: source_sub_column AS target_column. Do NOT swap or modify these names.
+        - Use struct() to combine multiple sub-columns
+        - If target data type is array, wrap the struct() in ARRAY(...), e.g. ARRAY(STRUCT(...))
+        - If the target data type and source data type are both scalar, strictly do NOT wrap the expression in STRUCT() or ARRAY(). Just generate the transformation logic
+        - Direct mapping from source column or source sub column to target if transformation is empty. Strictly follow this example pattern: source column as target column. For example: customer_id as cust_id should remain same
+        - Use CASE WHEN only if conditional logic exists
+        - If any source column is an array, use the exploded alias {exploded_alias} in the expression
+        - Strictly DO NOT use SELECT, FROM, EXPLODE(), ARRAY_ELEMENT_AT(), lit, or any other non-Spark SQL functions
+        - Alias output as the target column only using AS
+        - Return EXACTLY the expression, nothing else, no extra text, and strictly no SQL clause like SELECT or FROM table name
+        - Strictly no SQL clause like SELECT or FROM table name or any other SQL clause inside ARRAY(....)
