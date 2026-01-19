@@ -168,7 +168,7 @@ def main():
                 normalize_sql(x["generated_sql"]) == normalize_sql(x["expected_sql"]), **x
         }) |
         RunnableLambda(lambda x: {
-            "match_LLM": llm.invoke([HumanMessage(content=f"Compare two SQL statemtents and generate only true or false depending on whether they are equivalent or not. Two sqls are: {x["generated_sql"]} and {x["expected_sql"]}")]).content.strip().lower() == "true", **x
+            "match_LLM": llm.invoke([HumanMessage(content=f"Compare two SQL statemtents and generate only true or false depending on whether they are equivalent or not. Two sqls are: {x['generated_sql']} and {x['expected_sql']}")]).content.strip().lower() == "true", **x
         }) |
         RunnableLambda(lambda x: {
             "new_prompt": f""" For transformation logic: {x["transformation_logic"]} \n Generated sql: \n{x["generated_sql"]} is not generated properly. \n Generated sql should have been like this:\n {x["expected_sql"]}. Take this expecteed example as reference and make sure these kind of issues won't reappear in future.
