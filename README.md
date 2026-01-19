@@ -19,10 +19,9 @@ Supports custom input/output files via environment variables.
 Versioned Docker image (latest and 1.0.0) for reproducibility.
 
 📦 Pull the Docker Image
-docker pull <YOUR_DOCKERHUB_USERNAME>/etl_sql_generator:latest
+docker pull sambegdhakal/etl_sql_generator:latest
 
 
-Replace <YOUR_DOCKERHUB_USERNAME> with your Docker Hub username.
 
 🚀 Run the Container (Windows)
 
